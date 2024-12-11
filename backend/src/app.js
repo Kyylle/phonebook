@@ -1,10 +1,8 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
-
-// Import routes
-import userRoutes from './routes/userRoutes';
+import userRoutes from './routes/userRoutes.js';
 
 // Initialize environment variables
 dotenv.config();
@@ -20,7 +18,7 @@ app.use(cors()); // Enable Cross-Origin Resource Sharing (CORS)
 app.use('/api/users', userRoutes); // Use user routes
 
 // Root route (for testing)
-app.get('/', (req: Request, res: Response) => {
+app.get('/', (req, res) => {
   res.send('Backend is running');
 });
 
