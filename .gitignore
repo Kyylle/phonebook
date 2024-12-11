@@ -1,0 +1,12 @@
+# Root-level ignores
+node_modules/
+*.log
+.env
+
+# Ignore all dist files
+backend/dist/
+frontend/dist/
+
+# Ignore TypeScript build info
+backend/*.tsbuildinfo
+frontend/*.tsbuildinfo
