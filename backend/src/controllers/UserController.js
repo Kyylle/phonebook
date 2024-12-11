@@ -4,9 +4,15 @@ import jwt from 'jsonwebtoken';
 import User from '../models/Users.js'
 import generateToken from '../utils/generateToken.js';
 
+
+//get all users
+export const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find();
+  res.json(users);
+});
 // Create New User
 export const createUser = asyncHandler(async (req, res) => {
-  const { firstName, lastName, userName, email, password, isAdmin } = req.body;
+  const { firstName, lastName, userName, email, password } = req.body;
 
   const existingUser = await User.findOne({ email });
   if (existingUser) {
@@ -20,7 +26,6 @@ export const createUser = asyncHandler(async (req, res) => {
     userName,
     email,
     password: hashedPassword,
-    isAdmin,
   });
 
   res.status(201).json({
